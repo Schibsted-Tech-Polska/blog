@@ -4,22 +4,19 @@ title: "Completly custom android dialog"
 date: 2014-12-03 10:25:00 +0100
 comments: true
 categories: [android, ui, android dialog]
-published: true
 author: Jacek Kwiecień
 ---
 
 I’ve been digging through tons of solutions, that are obsolete or doesn’t work at all.
-Let’s say we wan’t to completly custom dialog, that could look like this :
+Let’s say we wan’t to completly custom dialog. Please forgive the polish language, but I don't think it's relevant in this case.
 
-{% img [class names] http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png Custom android dialog %}
-
-Please forgive the polish language, but I don't think it's relevant in this case.
+{% img left http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png Custom android dialog %}
 
 First of you need some background for your dialog. 
 I used a simple nine patch, pink background, light border. It named popup_bg
 
 Second, you have to write a style for the dialog.
-``` xml
+```
 <style name="Dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/popup_bg</item>
         <item name="android:windowNoTitle">true</item>
