@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: serialization | STP Devs]]></title>
+  <link href="http://schibsted-tech-polska.github.io/blog/blog/categories/serialization/atom.xml" rel="self"/>
+  <link href="http://schibsted-tech-polska.github.io/blog/"/>
+  <updated>2014-12-03T14:13:23+01:00</updated>
+  <id>http://schibsted-tech-polska.github.io/blog/</id>
+  <author>
+    <name><![CDATA[Schibsted Tech Polska]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to serialize object object with non-serializable fields in java?]]></title>
+    <link href="http://schibsted-tech-polska.github.io/blog/blog/2014/12/03/how-to-serialize-object-object-with-non-serializable-fields-in-java/"/>
+    <updated>2014-12-03T12:59:10+01:00</updated>
+    <id>http://schibsted-tech-polska.github.io/blog/blog/2014/12/03/how-to-serialize-object-object-with-non-serializable-fields-in-java</id>
+    <content type="html"><![CDATA[<p>There might be a situation when you wan’t to serialize your custom object, but it contains fields of types that are not serializable. The one pupular example would be a joda DateTime. Here is the code:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomClass</span> <span class="kd">implements</span> <span class="n">Serializable</span><span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="c1">//serializable fields</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//non-serializable fields</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">DateTime</span> <span class="n">date</span><span class="o">;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Serializing that would give you an exception. But there is still hope. Java allows us to make a custom serialization.</p>
+
+<p>First we need to make non-serializable fields transient, for further convinience:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">//non-serializable fields</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">transient</span> <span class="n">DateTime</span> <span class="n">date</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Then just write those methods into your class:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="n">ObjectInputStream</span> <span class="n">input</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// deserialize the non-transient data members first;</span>
+</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="na">defaultReadObject</span><span class="o">();</span>
+</span><span class='line'>    <span class="c1">// Read the date</span>
+</span><span class='line'>    <span class="n">setDate</span><span class="o">((</span><span class="n">DateTime</span><span class="o">)</span> <span class="n">input</span><span class="o">.</span><span class="na">readObject</span><span class="o">());</span>
+</span><span class='line'><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">private</span> <span class="kt">void</span> <span class="nf">writeObject</span><span class="o">(</span><span class="n">ObjectOutputStream</span> <span class="n">output</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// serialize the non-transient data members first;</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="na">defaultWriteObject</span><span class="o">();</span>
+</span><span class='line'>    <span class="c1">// Write the date</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>That’s it. Final code of your class would be now this:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomClass</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="c1">//serializable fields</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//non-serializable fields</span>
+</span><span class='line'><span class="kd">private</span> <span class="kd">transient</span> <span class="n">DateTime</span> <span class="n">date</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="n">ObjectInputStream</span> <span class="n">input</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// deserialize the non-transient data members first;</span>
+</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="na">defaultReadObject</span><span class="o">();</span>
+</span><span class='line'>    <span class="c1">// Read the color</span>
+</span><span class='line'>    <span class="n">setDate</span><span class="o">((</span><span class="n">DateTime</span><span class="o">)</span> <span class="n">input</span><span class="o">.</span><span class="na">readObject</span><span class="o">());</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">writeObject</span><span class="o">(</span><span class="n">ObjectOutputStream</span> <span class="n">output</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// serialize the non-transient data members first;</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="na">defaultWriteObject</span><span class="o">();</span>
+</span><span class='line'>    <span class="c1">// Write the color</span>
+</span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>
