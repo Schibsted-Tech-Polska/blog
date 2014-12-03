@@ -1,29 +1,13 @@
-// $font-icon: FontAwesome;
-$font-icon-path: "cubano-regular-webfont";
-
-@font-face {
-    font-family: 'CubanoRegular';
-    src: font-url('#{$font-icon-path}.eot');
-    src: url('#{font-url('#{$font-icon-path}.eot', true)}#iefix') format('embedded-opentype'),
-         font-url('#{$font-icon-path}.woff') format('woff'),
-         font-url('#{$font-icon-path}.ttf') format('truetype'),
-         url('#{font-url('#{$font-icon-path}.svg', true)}#CubanoRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 $blockquote: $type-border !default;
-$sans: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif !default;
-$serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
-$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-$heading-font-family: "CubanoRegular", "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+$sans: "Lato", "Helvetica Neue", Arial, sans-serif !default;
+$serif: "Lora", Georgia, Times, "Times New Roman", serif !default;
+$mono: "Source Code Pro",Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+$heading-font-family: $serif !default;
 $header-title-font-family: $heading-font-family !default;
 $header-subtitle-font-family: $heading-font-family !default;
 
-
 // Fonts
-header h1 {
+.heading {
   font-family: $heading-font-family;
 }
 .sans { font-family: $sans; }
@@ -32,6 +16,7 @@ header h1 {
 
 body > header h1 {
   font-size: 2.2em;
+  @extend .heading;
   font-family: $header-title-font-family;
   font-weight: normal;
   line-height: 1.2em;
@@ -42,29 +27,13 @@ body > header h2 {
 }
 
 body {
-  line-height: 2em;
-  color: $white;
+  line-height: 1.5em;
+  color: $text-color;
   @extend .sans;
 }
 h1 {
   font-size: 2.2em;
   line-height: 1.2em;
-}
-
-.categories {
-  color: $brick;
-  .category {
-    background-color: $darkBrick;
-    display: inline-block;
-    padding: 0px 10px;
-    margin-right: 10px;
-    color: $yellow;
-    text-decoration: none;
-    &:hover {
-      background-color: $yellow;
-      color: $darkBrick;
-    }
-  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -73,6 +42,7 @@ h1 {
 }
 
 #{headings()}{
+  @extend .heading;
   text-rendering: optimizelegibility;
   margin-bottom: 1em;
   font-weight: bold;
@@ -125,10 +95,7 @@ del, s { text-decoration: line-through; }
 
 abbr, acronym { border-bottom: 1px dotted; cursor: help; }
 
-pre, code, tt { 
-  @extend .mono; 
-  background-color: $base03;
-}
+pre, code, tt { @extend .mono; }
 
 sub, sup { line-height: 0; }
 
@@ -142,14 +109,14 @@ blockquote {
   $bq-margin: 1.2em;
   font-style: italic;
   position: relative;
-  font-size: 1em;
-  line-height: 1.3em;
+  font-size: 1.2em;
+  line-height: 1.5em;
   padding-left: 1em;
-  border-left: 4px solid $darkBrick;
+  border-left: 4px solid rgba($text-color-light, .5);
   cite {
     font-style: italic;
     a { color: $text-color-light !important; word-wrap: break-word; }
-    // &:before { content: '\2014'; padding:{right: .3em; left: .3em;} color: $text-color-light; }
+    &:before { content: '\2014'; padding:{right: .3em; left: .3em;} color: $text-color-light; }
   }
   @media only screen and (min-width: 992px) {
     padding-left: 1.5em;
