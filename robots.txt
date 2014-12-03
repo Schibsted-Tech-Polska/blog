@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://schibsted-tech-polska.github.io/blog/sitemap.xml 
