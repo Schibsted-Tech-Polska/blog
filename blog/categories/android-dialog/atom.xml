@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android dialog | STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/blog/categories/android-dialog/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:43:17+01:00</updated>
+  <updated>2014-12-03T12:44:25+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -24,7 +24,7 @@ Let’s say we wan’t to completly custom dialog. Please forgive the polish lan
 <p><img class="<a" src="href="http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png">http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png</a>&#8221; title=&#8221;Custom android dialog&#8221; ></p>
 
 <p>First of you need some background for your dialog.
-I used a simple nine patch, pink background, light border. It named popup_bg</p>
+I used a simple nine patch, pink background, light border. I named popup_bg</p>
 
 <p>Second, you have to write a style for the dialog.
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
