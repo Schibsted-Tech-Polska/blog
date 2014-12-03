@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android dialog | STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/blog/categories/android-dialog/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:04:27+01:00</updated>
+  <updated>2014-12-03T12:09:40+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -29,7 +29,7 @@ Let’s say we wan’t to completly custom dialog, that could look like this :</
 I used a simple nine patch, pink background, light border. It named popup_bg</p>
 
 <p>Second, you have to write a style for the dialog.
-&#8220;` xml</p>
+&#8220;`</p>
 
 
 
