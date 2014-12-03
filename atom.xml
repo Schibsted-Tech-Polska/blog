@@ -3,7 +3,7 @@
   <title><![CDATA[STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:47:00+01:00</updated>
+  <updated>2014-12-03T12:48:05+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -42,8 +42,7 @@ I used a simple nine patch, pink background, light border. I named <code>popup_b
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Then create a layout for your custom dialog. I named it <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>dialog_leave_game</span></code></pre></td></tr></table></div></figure>.</p>
+<p>Then create a layout for your custom dialog. I named it <code>dialog_leave_game</code></p>
 
 <p>Eventually you create the <code>DialogFragment</code> class</p>
 
