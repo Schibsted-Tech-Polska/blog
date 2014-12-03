@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:42:04+01:00</updated>
+  <updated>2014-12-03T12:43:17+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>I’ve been digging through tons of solutions, that are obsolete or doesn’t work at all.
 Let’s say we wan’t to completly custom dialog. Please forgive the polish language, but I don&rsquo;t think it&rsquo;s relevant in this case.</p>
 
-<p><img class="left <a" src="href="http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png">http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png</a>&#8221; title=&#8221;Custom android dialog&#8221; ></p>
+<p><img class="<a" src="href="http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png">http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png</a>&#8221; title=&#8221;Custom android dialog&#8221; ></p>
 
 <p>First of you need some background for your dialog.
 I used a simple nine patch, pink background, light border. It named popup_bg</p>
