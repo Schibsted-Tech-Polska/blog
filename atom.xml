@@ -3,7 +3,7 @@
   <title><![CDATA[STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:37:27+01:00</updated>
+  <updated>2014-12-03T12:38:14+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -40,6 +40,10 @@ I used a simple nine patch, pink background, light border. It named popup_bg</p>
 </span><span class='line'>        &lt;item name="android:textViewStyle"&gt;@style/TextView&lt;/item&gt; // if you want to style containint text
 </span><span class='line'>    &lt;/style&gt;</span></code></pre></td></tr></table></div></figure>
 
+
+<p>Then create a layout for your custom dialog. I named it dialog_leave_game.</p>
+
+<p>Eventually you create the DialogFragment class</p>
 ]]></content>
   </entry>
   
