@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | STP Devs]]></title>
   <link href="http://schibsted-tech-polska.github.io/blog/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://schibsted-tech-polska.github.io/blog/"/>
-  <updated>2014-12-03T12:34:32+01:00</updated>
+  <updated>2014-12-03T12:35:16+01:00</updated>
   <id>http://schibsted-tech-polska.github.io/blog/</id>
   <author>
     <name><![CDATA[Schibsted Tech Polska]]></name>
@@ -18,11 +18,54 @@
     <link href="http://schibsted-tech-polska.github.io/blog/blog/2014/12/03/completly-custom-android-dialog/"/>
     <updated>2014-12-03T10:25:00+01:00</updated>
     <id>http://schibsted-tech-polska.github.io/blog/blog/2014/12/03/completly-custom-android-dialog</id>
-    <content type="html"><![CDATA[<p>&#8220;`</p>
+    <content type="html"><![CDATA[<p>I’ve been digging through tons of solutions, that are obsolete or doesn’t work at all.
+Let’s say we wan’t to completly custom dialog. Please forgive the polish language, but I don&rsquo;t think it&rsquo;s relevant in this case.</p>
+
+<p>{% img left <a href="http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png">http://www.aprilapps.com/wp-content/uploads/2014/10/Screenshot-168x300.png</a> Custom android dialog %}</p>
+
+<p>First of you need some background for your dialog.
+I used a simple nine patch, pink background, light border. It named popup_bg</p>
+
+<p>Second, you have to write a style for the dialog.
+&#8220;`</p>
 
 
 
-<p>&#8220;`</p>
+<pre><code>
+Then create a layout for your custom dialog. I named it dialog_leave_game.
+
+Eventually you create the DialogFragment class
+</code></pre>
+
+<p>public class LeaveGameDialog extends DialogFragment {</p>
+
+<pre><code>public interface ILeaveGameDialog {
+    public void onLeaveGameConfirmed();
+}
+
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    Dialog dialog = new Dialog(getActivity(), R.style.Dialog);
+    dialog.setContentView(R.layout.dialog_leave_game);
+    ButterKnife.inject(this, dialog.getWindow().getDecorView()); //only if you use ButterKnife library
+
+    return dialog;
+}
+
+@OnClick(R.id.leave_button)  //only if you use ButterKnife library
+protected void onLeaveClicked() {
+    getListener().onLeaveGameConfirmed();
+    this.dismiss();
+}
+
+@OnClick(R.id.stay_button)  //only if you use ButterKnife library
+protected void onStayClicked() {
+    this.dismiss();
+}
+</code></pre>
+
+<p>}
+&#8220;`</p>
 ]]></content>
   </entry>
   
