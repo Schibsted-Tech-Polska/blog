@@ -78,12 +78,13 @@ I used a simple nine patch, pink background, light border. It named popup_bg</p>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;style name="Dialog" parent="@android:style/Theme.Dialog"&gt;
-</span><span class='line'>        &lt;item name="android:windowBackground"&gt;@drawable/popup_bg&lt;/item&gt;
-</span><span class='line'>        &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
-</span><span class='line'>        &lt;item name="android:buttonStyle"&gt;@style/DarkButton&lt;/item&gt; //if you want to style containing buttons
-</span><span class='line'>        &lt;item name="android:textViewStyle"&gt;@style/TextView&lt;/item&gt; // if you want to style containint text
-</span><span class='line'>    &lt;/style&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;Dialog&quot;</span> <span class="na">parent=</span><span class="s">&quot;@android:style/Theme.Dialog&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground&quot;</span><span class="nt">&gt;</span>@drawable/popup_bg<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowNoTitle&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:buttonStyle&quot;</span><span class="nt">&gt;</span>@style/DarkButton<span class="nt">&lt;/item&gt;</span> //if you want to style containing buttons
+</span><span class='line'>        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:textViewStyle&quot;</span><span class="nt">&gt;</span>@style/TextView<span class="nt">&lt;/item&gt;</span> // if you want to style containint text
+</span><span class='line'>    <span class="nt">&lt;/style&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then create a layout for your custom dialog. I named it dialog_leave_game.</p>
