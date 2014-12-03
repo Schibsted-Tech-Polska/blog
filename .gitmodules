@@ -13,3 +13,6 @@
 [submodule ".themes/dotmin"]
 	path = .themes/dotmin
 	url = git@github.com:dotkrnl/dotmin.git
+[submodule ".themes/fabric"]
+	path = .themes/fabric
+	url = git://github.com/panks/fabric.git

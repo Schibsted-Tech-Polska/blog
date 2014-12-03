@@ -4,7 +4,6 @@ title: "How to serialize object object with non-serializable fields in java?"
 date: 2014-12-03 12:59:10 +0100
 comments: true
 categories: [java, serialization]
-categories: 
 ---
 
 There might be a situation when you wan’t to serialize your custom object, but it contains fields of types that are not serializable. The one pupular example would be a joda DateTime. Here is the code:

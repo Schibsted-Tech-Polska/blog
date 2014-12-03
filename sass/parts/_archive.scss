@@ -30,7 +30,7 @@
 	}
 	article{
 		margin-left: 200px;
-		padding: 15px 0;
+		padding: 10px 0;
 		@media screen and (max-width: 600px){
 			margin-left: 0;
 			&:first-of-type{
@@ -40,12 +40,13 @@
 		}
 		.title{
 			margin-bottom: 0;
+            font-size: 25px;
 		}
 		.meta{
 			color: $color-gray02;
 			font-size: 0.9em;
 			line-height: 2;
-			margin-top: 15px;
+			margin-top: 10px;
 			@media screen and (max-width: 600px){
 				display: none;
 			}
@@ -64,17 +65,6 @@
 				&:hover{
 					color: $color-gray01;
 				}
-			}
-			.date, .tags, .comments {
-			    padding-left: 30px;
-			    position: relative;
-			    &:before{
-			      color: $color-gray02;
-			      font: 1.3em $font-icon;
-			      line-height: 1.6em;
-			      position: absolute;
-			      left: 0;
-			    }
 			}
 			.date:before{content: "\f073";}
 			.tags:before{content: "\f02c";}
