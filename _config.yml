@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://schibsted-tech-polska.github.io/blog
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: STP Devs
+subtitle: Schibsted Tech Polska proud developers blog.
+author: Schibsted Tech Polska
 simple_search: https://www.google.com/search
-description:
+description: We intent to share some code here!
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -74,7 +74,7 @@ twitter_user:
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -98,4 +98,5 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
+
