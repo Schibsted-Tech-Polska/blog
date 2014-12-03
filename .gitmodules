@@ -4,3 +4,12 @@
 [submodule ".themes/oct2"]
 	path = .themes/oct2
 	url = git@github.com:bijumon/oct2.git
+[submodule ".themes/cleanpress"]
+	path = .themes/cleanpress
+	url = git://github.com/macjasp/cleanpress.git
+[submodule ".themes/darkstripes"]
+	path = .themes/darkstripes
+	url = git://github.com/amelandri/darkstripes.git
+[submodule ".themes/dotmin"]
+	path = .themes/dotmin
+	url = git@github.com:dotkrnl/dotmin.git
